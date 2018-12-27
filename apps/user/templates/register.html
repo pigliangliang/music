@@ -1,0 +1,55 @@
+{% extends "title_base.html" %}
+{% block title  %}
+{% load staticfiles %}
+<link type="image/x-icon" rel="shortcut icon" href="{% static "favicon.ico" %}">
+<link type="text/css" rel="stylesheet" href="{% static "css/common.css" %}">
+<link type="text/css" rel="stylesheet" href="{% static "css/register.css" %}">
+</head>
+
+<body class="review">
+<div class="wrapper">
+    <div class="header clearfix">
+        <a href="/" class="logo">我的音乐</a>
+        <span class="logo-tip">Hi,我的音乐欢迎您!</span>
+    </div>
+
+    <div class="content clearfix">
+        <!-- 登录注册版块 -->
+<div></div>
+                <form id="" class="formBox" method="post" action="">
+                    {% csrf_token %}
+                    <div id="registForm" class="formBox">
+                    <div class="itembox user-name">
+                    <div class="item">
+                        {{ user.username }}
+                    </div>
+                    </div>
+                    <div class="itembox user-name">
+                    <div class="item">
+                        {{ user.mobile }}
+                    </div>
+                    </div>
+                    <div class="itembox user-pwd">
+                    <div class="item">
+                        {{ user.password1 }}
+                    </div>
+                    </div>
+                    <div class="itembox user-pwd">
+                    <div class="item">
+                        {{ user.password2 }}
+                    </div>
+                    </div>
+                    {% if tips %}
+                        <div>提示:<span>{{ tips }}</span></div>
+                    {% endif %}
+                    <div class="member-pass clearfix">
+                        <input id="agree" name="agree" checked="checked" type="checkbox" value="1"><label for="agree" class="autologon">已阅读并同意用户注册协议</label>
+                    </div>
+                        <input type="submit" value="免费注册" id="J_RegButton" class="pass-btn tabInput"/>
+                        <div class="pass-reglink">已有我的音乐帐号，<a href="{% url 'user:login' %}">立即登录</a></div>
+                    </div>
+
+
+
+<script data-main="{% static "js/register.js" %}" src="{% static "js/require.js" %}"></script>
+{% endblock  %}
